@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply bg-gray-100 font-sans;
+  }
+  button{
+    @apply text-sm
+  }
+  button, input, textarea{
+    @apply focus:outline-gray-400 focus:outline-1 focus:outline-offset-1
+  }
+}
