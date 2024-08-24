@@ -1,24 +1,32 @@
-import Header from "../components/Header";
-import TaskItem from "../components/TaskItem";
-import Button from "../components/ui/Button";
-import { Plus } from "lucide-react"
+import Header from '../components/Header';
+import { useModal } from '../hooks/useModal';
+import { TaskProvider } from '../contexts/TaskContext';
+import AddTaskButton from '../components/AddTaskBtn';
+import TaskModal from '../components/TaskModal';
+import TaskList from '../components/TaskList';
 
-export default function Home() {
+const Home = () => {
+  const { isOpen, task, openModal, closeModal } = useModal();
+
   return (
-    <div>
-        <Header/>
+    <TaskProvider>
+      <div>
+        <Header />
         <main className="mt-6">
-            <div className="flex justify-between items-center">
-               <h1 className="text-3xl font-bold">Task List</h1>
-               <Button type="button"><Plus className="size-4"/>Add task</Button>
-            </div>
-            <div className="grid md:grid-cols-4 sm:grid-cols-3 xs:grid-cols-2 grid-cols-1 gap-4 mt-4">
-              <TaskItem/>
-              <TaskItem/>
-              <TaskItem/>
-              <TaskItem/>
-            </div>
+          <div className="flex justify-between items-center">
+            <h1 className="text-3xl font-bold">Task List</h1>
+            <AddTaskButton openModal={openModal} />
+          </div>
+          <TaskList openModal={openModal} />
         </main>
-    </div>
-  )
-}
+        <TaskModal
+          task={task}
+          isOpen={isOpen}
+          closeModal={closeModal}
+        />
+      </div>
+    </TaskProvider>
+  );
+};
+
+export default Home;

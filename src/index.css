@@ -12,4 +12,7 @@
   button, input, textarea{
     @apply focus:outline-gray-400 focus:outline-1 focus:outline-offset-1
   }
+  input, textarea{
+    @apply text-sm
+  }
 }
