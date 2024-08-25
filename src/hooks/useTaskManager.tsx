@@ -8,17 +8,17 @@ const useTaskManager = () => {
       id: 1,
       title: "Task 1",
       description: "This is a task description",
-      status: "current",
+      status: "Waiting",
       start: moment().format("YYYY-MM-DD"),
     },
   ]);
 
-  const addTask = useCallback((task: TaskType) => {
-    setTasks((prevTasks) => [...prevTasks, { ...task, id: prevTasks.length + 1 }]);
+  const addTask = useCallback((newTask: TaskType) => {
+    setTasks((prevTasks) => [...prevTasks, { ...newTask, id: prevTasks.length + 1 }]);
   }, []);
 
-  const updateTask = useCallback((task: TaskType) => {
-    setTasks((prevTasks) => prevTasks.map((t) => (t.id === task.id ? task : t)));
+  const updateTask = useCallback((newTask: TaskType) => {
+    setTasks((prevTasks) => prevTasks.map((t) => (t.id === newTask.id ? newTask : t)));
   }, []);
 
   const deleteTask = useCallback((id: number) => {

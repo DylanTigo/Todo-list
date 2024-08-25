@@ -16,7 +16,7 @@ const initialTask: TaskType = {
   id: 0,
   title: '',
   description: '',
-  status: 'current',
+  status: 'Waiting',
   start: moment().format('YYYY-MM-DD'),
 };
 
